@@ -1,10 +1,28 @@
 package chess;
 
-//This class requires your input
-public class Square {
+public class Square
+{
 	private boolean hasPiece;
+	private Piece p;
 	
-	public boolean hasPiece(){
+	public Piece getPiece()
+	{
+		return p;
+	}
+
+	public void setPiece(Piece newP)
+	{
+		p = newP;
+	}
+
+	// REQUIRES WORK
+	public void removePiece()
+	{
+		
+	}
+
+	public boolean hasPiece()
+	{
 		return hasPiece;
-	}	
+	}
 }
