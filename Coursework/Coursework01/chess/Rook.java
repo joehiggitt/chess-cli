@@ -4,19 +4,17 @@ public class Rook extends Piece
 {
 	public Rook(PieceColour newColour)
 	{
-		if (newColour == PieceColour.BLACK)
+		super(newColour);
+		switch(newColour)
 		{
-			colour = newColour;
-			setSymbol("\u0265C");
-		}
-		else if (newColour == PieceColour.WHITE)
-		{
-			colour = newColour;
-			setSymbol("\u02656");
-		}
-		else
-		{
-			System.out.println("Logic Error - Rook Class - newColour");
+			case BLACK:
+				setSymbol("♜"); // \u0265C
+				break;
+			case WHITE:
+				setSymbol("♖"); // \u02656
+				break;
+			default:
+				System.out.println("Logic Error - King Class - newColour");
 		}
 	}
 

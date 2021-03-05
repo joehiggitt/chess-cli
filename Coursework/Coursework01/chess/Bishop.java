@@ -4,19 +4,17 @@ public class Bishop extends Piece
 {
 	public Bishop(PieceColour newColour)
 	{
-		if (newColour == PieceColour.BLACK)
+		super(newColour);
+		switch(newColour)
 		{
-			colour = newColour;
-			setSymbol("\u0265D");
-		}
-		else if (newColour == PieceColour.WHITE)
-		{
-			colour = newColour;
-			setSymbol("\u02657");
-		}
-		else
-		{
-			System.out.println("Logic Error - Bishop Class - newColour");
+			case BLACK:
+				setSymbol("♝"); // \u0265D
+				break;
+			case WHITE:
+				setSymbol("♗"); // \u02657
+				break;
+			default:
+				System.out.println("Logic Error - King Class - newColour");
 		}
 	}
 

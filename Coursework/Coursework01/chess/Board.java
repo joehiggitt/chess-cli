@@ -16,30 +16,30 @@ public class Board
 	// REQUIRES WORK
 	public static void initialisePieces()
 	{
-		board.setPiece(0, 0, new Rook(PieceColour.BLACK));
-		// board.setPiece(1, 0, new Knight(PieceColour.BLACK));
-		// board.setPiece(2, 0, new Bishop(PieceColour.BLACK));
-		// board.setPiece(3, 0, new Queen(PieceColour.BLACK));
-		// board.setPiece(4, 0, new King(PieceColour.BLACK));
-		// board.setPiece(5, 0, new Bishop(PieceColour.BLACK));
-		// board.setPiece(6, 0, new Knight(PieceColour.BLACK));
-		// board.setPiece(7, 0, new Rook(PieceColour.BLACK));
-		// for (int i = 0; i < 7; i++)
-		// {
-		// 	board.setPiece(i, 1, new Pawn(PieceColour.BLACK));
-		// }
-		// for (int i = 0; i < 7; i++)
-		// {
-		// 	board.setPiece(i, 6, new Pawn(PieceColour.WHITE));
-		// }
-		// board.setPiece(0, 7, new Rook(PieceColour.WHITE));
-		// board.setPiece(1, 7, new Knight(PieceColour.WHITE));
-		// board.setPiece(2, 7, new Bishop(PieceColour.WHITE));
-		// board.setPiece(3, 7, new Queen(PieceColour.WHITE));
-		// board.setPiece(4, 7, new King(PieceColour.WHITE));
-		// board.setPiece(5, 7, new Bishop(PieceColour.WHITE));
-		// board.setPiece(6, 7, new Knight(PieceColour.WHITE));
-		// board.setPiece(7, 7, new Rook(PieceColour.WHITE));
+		setPiece(0, 0, new Rook(PieceColour.BLACK));
+		setPiece(0, 1, new Knight(PieceColour.BLACK));
+		setPiece(0, 2, new Bishop(PieceColour.BLACK));
+		setPiece(0, 3, new Queen(PieceColour.BLACK));
+		setPiece(0, 4, new King(PieceColour.BLACK));
+		setPiece(0, 5, new Bishop(PieceColour.BLACK));
+		setPiece(0, 6, new Knight(PieceColour.BLACK));
+		setPiece(0, 7, new Rook(PieceColour.BLACK));
+		for (int i = 0; i < 8; i++)
+		{
+			setPiece(1, i, new Pawn(PieceColour.BLACK));
+		}
+		for (int i = 0; i < 8; i++)
+		{
+			setPiece(6, i, new Pawn(PieceColour.WHITE));
+		}
+		setPiece(7, 0, new Rook(PieceColour.WHITE));
+		setPiece(7, 1, new Knight(PieceColour.WHITE));
+		setPiece(7, 2, new Bishop(PieceColour.WHITE));
+		setPiece(7, 3, new Queen(PieceColour.WHITE));
+		setPiece(7, 4, new King(PieceColour.WHITE));
+		setPiece(7, 5, new Bishop(PieceColour.WHITE));
+		setPiece(7, 6, new Knight(PieceColour.WHITE));
+		setPiece(7, 7, new Rook(PieceColour.WHITE));
 	}
 	
 	public static void printBoard()
@@ -77,7 +77,12 @@ public class Board
 	// REQUIRES WORK	
 	public static boolean movePiece(int i0, int j0, int i1, int j1, Piece p)
 	{
-		
+		if (board[i1][j1].getPiece() == null && board[i0][j0].getPiece() == p)
+		{
+			board[i1][j1].setPiece(board[i0][j0].getPiece());
+			board[i0][j0].setPiece(null);
+			return false;
+		}
 		return false;
 	}
 

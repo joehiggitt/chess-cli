@@ -4,19 +4,17 @@ public class Queen extends Piece
 {
 	public Queen(PieceColour newColour)
 	{
-		if (newColour == PieceColour.BLACK)
+		super(newColour);
+		switch(newColour)
 		{
-			colour = newColour;
-			setSymbol("\u0265B");
-		}
-		else if (newColour == PieceColour.WHITE)
-		{
-			colour = newColour;
-			setSymbol("\u02655");
-		}
-		else
-		{
-			System.out.println("Logic Error - Queen Class - newColour");
+			case BLACK:
+				setSymbol("♛"); // \u0265B
+				break;
+			case WHITE:
+				setSymbol("♕"); // \u02655
+				break;
+			default:
+				System.out.println("Logic Error - King Class - newColour");
 		}
 	}
 

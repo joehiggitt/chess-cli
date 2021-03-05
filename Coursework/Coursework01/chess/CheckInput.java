@@ -12,18 +12,16 @@ public class CheckInput
 
 		char[] nums = {'1', '2', '3', '4', '5', '6', '7', '8'};
 		char[] letters = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
-		char num = input.charAt(0);
-		char letter = Character.toLowerCase(input.charAt(1));
 
 		if (input.length() == 2)
 		{
 			for (char itemNums : nums)
 			{
-				if (itemNums == num)
+				if (input.indexOf(itemNums) == 0)
 				{
 					for (char itemLetters : letters)
 					{
-						if (itemLetters == num)
+						if (input.indexOf(itemLetters) == 1)
 						{
 							return true;
 						}

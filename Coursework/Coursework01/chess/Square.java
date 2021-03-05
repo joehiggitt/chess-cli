@@ -5,6 +5,12 @@ public class Square
 	private boolean hasPiece;
 	private Piece p;
 	
+	public Square()
+	{
+		hasPiece = false;
+		p = null;
+	}
+
 	public Piece getPiece()
 	{
 		return p;

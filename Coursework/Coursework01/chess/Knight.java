@@ -4,19 +4,17 @@ public class Knight extends Piece
 {
 	public Knight(PieceColour newColour)
 	{
-		if (newColour == PieceColour.BLACK)
+		super(newColour);
+		switch(newColour)
 		{
-			colour = newColour;
-			setSymbol("\u0265E");
-		}
-		else if (newColour == PieceColour.WHITE)
-		{
-			colour = newColour;
-			setSymbol("\u02658");
-		}
-		else
-		{
-			System.out.println("Logic Error - Knight Class - newColour");
+			case BLACK:
+				setSymbol("♞"); // \u0265E
+				break;
+			case WHITE:
+				setSymbol("♘"); // \u02658
+				break;
+			default:
+				System.out.println("Logic Error - King Class - newColour");
 		}
 	}
 

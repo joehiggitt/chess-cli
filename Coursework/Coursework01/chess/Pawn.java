@@ -4,19 +4,17 @@ public class Pawn extends Piece
 {
 	public Pawn(PieceColour newColour)
 	{
-		if (newColour == PieceColour.BLACK)
+		super(newColour);
+		switch(newColour)
 		{
-			colour = newColour;
-			setSymbol("\u0265F");
-		}
-		else if (newColour == PieceColour.WHITE)
-		{
-			colour = newColour;
-			setSymbol("\u02659");
-		}
-		else
-		{
-			System.out.println("Logic Error - Pawn Class - newColour");
+			case BLACK:
+				setSymbol("♟︎"); // \u0265F
+				break;
+			case WHITE:
+				setSymbol("♙"); // \u02659
+				break;
+			default:
+				System.out.println("Logic Error - King Class - newColour");
 		}
 	}
 
