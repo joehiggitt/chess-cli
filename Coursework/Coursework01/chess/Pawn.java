@@ -13,14 +13,47 @@ public class Pawn extends Piece
 			case WHITE:
 				setSymbol("♙"); // \u02659
 				break;
-			default:
-				System.out.println("Logic Error - King Class - newColour");
 		}
 	}
 
 	@Override
 	public boolean isLegitMove(int i0, int j0, int i1, int j1)
 	{
+		switch(colour)
+		{
+			case BLACK:
+				if ((i1 == i0 + 1) && (j1 == j0))
+				{
+					return true;
+				}
+				if ((i1 == i0 + 2) && (i0 == 2) && (j1 == j0))
+				{
+					return true;
+				}
+				// REQUIRES WORK
+				if ((i1 == i0 + 1) && ((j1 == j0 + 1) || (j1 == j0 - 1)))
+				{
+					return true;
+				}
+				break;
+			case WHITE:
+				if ((i1 == i0 - 1) && (j1 == j0))
+				{
+					return true;
+				}
+				if ((i1 == i0 - 2) && (i0 == 5) && (j1 == j0))
+				{
+					return true;
+				}
+				// REQUIRES WORK
+				if ((i1 == i0 - 1) && ((j1 == j0 + 1) || (j1 == j0 - 1)))
+				{
+					return true;
+				}
+				break;
+			default:
+				return false;
+		}
 		return false;
 	}
 }

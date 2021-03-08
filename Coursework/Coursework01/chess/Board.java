@@ -77,12 +77,14 @@ public class Board
 	// REQUIRES WORK	
 	public static boolean movePiece(int i0, int j0, int i1, int j1, Piece p)
 	{
-		if (board[i1][j1].getPiece() == null && board[i0][j0].getPiece() == p)
+		if (p instanceof King)
 		{
 			board[i1][j1].setPiece(board[i0][j0].getPiece());
-			board[i0][j0].setPiece(null);
-			return false;
+			board[i0][j0].removePiece();
+			return true;
 		}
+		board[i1][j1].setPiece(board[i0][j0].getPiece());
+		board[i0][j0].removePiece();
 		return false;
 	}
 
@@ -90,17 +92,15 @@ public class Board
 	{
 		board[iIn][jIn].setPiece(p);
 	}
-	
-	// REQUIRES WORK
+
 	public static Piece getPiece(int iIn, int jIn)
 	{
 		return board[iIn][jIn].getPiece();
 	}
 	
-	// REQUIRES WORK
 	public static boolean hasPiece(int i, int j)
 	{		
-		if (board[i][j].getPiece() == null)
+		if (getPiece(i, j) == null)
 		{
 			return false;
 		}

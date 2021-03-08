@@ -21,6 +21,10 @@ public class King extends Piece
 	@Override
 	public boolean isLegitMove(int i0, int j0, int i1, int j1)
 	{
+		if ((i1 == i0 - 1) || (i1 == i0 + 1) || (j1 == j0 + 1) || (j1 == j0 + 1))
+		{
+			return true;
+		}
 		return false;
 	}
 }

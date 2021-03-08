@@ -1,4 +1,5 @@
 package chess;
+import java.lang.Math;
 
 public class Queen extends Piece
 {
@@ -21,6 +22,14 @@ public class Queen extends Piece
 	@Override
 	public boolean isLegitMove(int i0, int j0, int i1, int j1)
 	{
+		if ((i1 == i0) || (j1 == j0))
+		{
+			return true;
+		}
+		if (Math.abs(i1 - i0) == Math.abs(j1 - j0))
+		{
+			return true;
+		}
 		return false;
 	}
 }

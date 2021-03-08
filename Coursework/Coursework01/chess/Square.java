@@ -21,10 +21,9 @@ public class Square
 		p = newP;
 	}
 
-	// REQUIRES WORK
 	public void removePiece()
 	{
-		
+		setPiece(null);
 	}
 
 	public boolean hasPiece()
