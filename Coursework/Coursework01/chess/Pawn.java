@@ -19,34 +19,33 @@ public class Pawn extends Piece
 	@Override
 	public boolean isLegitMove(int i0, int j0, int i1, int j1)
 	{
+		boolean take = Board.hasPiece(i1, j1);
 		switch(colour)
 		{
 			case BLACK:
-				if ((i1 == i0 + 1) && (j1 == j0))
+				if ((i1 == i0 + 1) && (j1 == j0) && !take)
 				{
 					return true;
 				}
-				if ((i1 == i0 + 2) && (i0 == 2) && (j1 == j0))
+				if ((i1 == i0 + 2) && (i0 == 1) && (j1 == j0) && !take)
 				{
 					return true;
 				}
-				// REQUIRES WORK
-				if ((i1 == i0 + 1) && ((j1 == j0 + 1) || (j1 == j0 - 1)))
+				if ((i1 == i0 + 1) && ((j1 == j0 + 1) || (j1 == j0 - 1)) && take)
 				{
 					return true;
 				}
 				break;
 			case WHITE:
-				if ((i1 == i0 - 1) && (j1 == j0))
+				if ((i1 == i0 - 1) && (j1 == j0) && !take)
 				{
 					return true;
 				}
-				if ((i1 == i0 - 2) && (i0 == 5) && (j1 == j0))
+				if ((i1 == i0 - 2) && (i0 == 6) && (j1 == j0) && !take)
 				{
 					return true;
 				}
-				// REQUIRES WORK
-				if ((i1 == i0 - 1) && ((j1 == j0 + 1) || (j1 == j0 - 1)))
+				if ((i1 == i0 - 1) && ((j1 == j0 + 1) || (j1 == j0 - 1)) && take)
 				{
 					return true;
 				}

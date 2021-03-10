@@ -11,11 +11,15 @@ public class Game
 		Console keyboard = System.console();
 		Board board = new Board();
 		CheckInput checkInput = new CheckInput();
-		String[] turn = {"White", "Black"};
+		String[] turn = {"white", "black"};
 		int count = 0;
 
 		String origin = "";
 		String destination = "";
+		int i0, j0, i1, j1, iDif, jDif;
+		i0 = i1 = j0 = j1 = iDif = jDif = 0;
+		PieceColour colour = PieceColour.WHITE;
+		Piece originPiece, destinationPiece;
 
 		board.initialiseBoard();
 		board.initialisePieces();
@@ -25,11 +29,23 @@ public class Game
 			// Output board
 			board.printBoard();
 
-			// Get and validate input
+			// Sets variables before turn
 			int go = count % 2;
-			System.out.println("\n--- " + turn[go] + "'s move ---");
+			switch(go)
+			{
+				case 0:
+					colour = PieceColour.WHITE;
+					break;
+				case 1:
+					colour = PieceColour.BLACK;
+					break;
+			}
+			System.out.println("\n--- " + turn[go].substring(0, 1).toUpperCase() + turn[go].substring(1) + "'s move ---");
+
+			// Get and validate input
 			while (true)
 			{
+				// Asks for origin coordinates
 				System.out.println("Enter origin:");
 				do
 				{
@@ -46,6 +62,19 @@ public class Game
 					break;
 				}
 
+				// Converts input to useable format and finds piece at origin
+				i0 = Integer.parseInt(String.valueOf(origin.charAt(0))) - 1;
+				j0 = Integer.parseInt(String.valueOf(origin.charAt(1) - 97));
+				originPiece = board.getPiece(i0, j0);
+
+				// Checks if piece selected at origin coordinates is valid
+				if ((!board.hasPiece(i0, j0)) || (originPiece.getColour() != colour))
+				{
+					System.out.println("Square selected has no " + turn[go] + " piece.");
+					continue;
+				}
+
+				// Asks for destination coordinates
 				System.out.println("Enter destination:");
 				do
 				{
@@ -62,29 +91,31 @@ public class Game
 					break;
 				}
 
-				// Convert input to usable type
-				int i0 = Integer.parseInt(String.valueOf(origin.charAt(0))) - 1;
-				int j0 = Integer.parseInt(String.valueOf(origin.charAt(1) - 97));
-				int i1 = Integer.parseInt(String.valueOf(destination.charAt(0))) - 1;
-				int j1 = Integer.parseInt(String.valueOf(destination.charAt(1) - 97));
+				// Converts input to useable format
+				i1 = Integer.parseInt(String.valueOf(destination.charAt(0))) - 1;
+				j1 = Integer.parseInt(String.valueOf(destination.charAt(1) - 97));
 
-				// CHECK MOVE IS VALID
-				PieceColour colour = PieceColour.WHITE;
-				Piece originPiece = board.getPiece(i0, j0);
-				switch(go)
+				// Runs checks to ensure move is valid
+				if ((i0 == i1) && (j0 == j1))
 				{
-					case 0:
-						colour = PieceColour.WHITE;
-						break;
-					case 1:
-						colour = PieceColour.BLACK;
-						break;
+					System.out.println("Can't move piece to same square.");
+					continue;
 				}
-				
-				if ((!board.hasPiece(i0, j0)) || (originPiece.getColour() != colour) || (!originPiece.isLegitMove(i0, j0, i1, j1)))
+
+				if (!originPiece.isLegitMove(i0, j0, i1, j1))
 				{
 					System.out.println("Move not valid.");
 					continue;
+				}
+
+				if (board.hasPiece(i1, j1))
+				{
+					destinationPiece = board.getPiece(i1, j1);
+					if (destinationPiece.getColour() == colour)
+					{
+						System.out.println("Move not valid.");
+						continue;
+					}
 				}
 
 				// Move pieces and check for win

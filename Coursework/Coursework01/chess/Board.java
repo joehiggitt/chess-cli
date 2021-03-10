@@ -45,23 +45,23 @@ public class Board
 	public static void printBoard()
 	{
 		System.out.print("\n  a b c d e f g h \n");
-		System.out.print("  -----------------\n");		
+		System.out.print("  ---------------\n");		
 		for (int i = 0; i < board[0].length; i++)
 		{
 			int row=i+1;
 				for (int j = 0; j < board[1].length; j++)
 				{
-					if ((j == 0) && Board.hasPiece(i,j))
+					if ((j == 0) && hasPiece(i,j))
 					{
-						System.out.print(row + " " + Board.getPiece(i,j).getSymbol());	
+						System.out.print(row + " " + getPiece(i,j).getSymbol());	
 					}
-					else if ((j == 0) && !Board.hasPiece(i,j))
+					else if ((j == 0) && !hasPiece(i,j))
 					{
 						System.out.print(row + "  " );
 					}
 					else if (Board.hasPiece(i,j))
 					{					
-						System.out.print("|" + Board.getPiece(i,j).getSymbol());					
+						System.out.print("|" + getPiece(i,j).getSymbol());					
 					}
 					else
 					{
@@ -70,7 +70,7 @@ public class Board
 				}				
 				System.out.print("  " + row + "\n");
 		}
-		System.out.print("  -----------------");
+		System.out.print("  ---------------");
 		System.out.print("\n  a b c d e f g h \n");	
 	}
 	
@@ -88,14 +88,14 @@ public class Board
 		return false;
 	}
 
-	public static void setPiece(int iIn, int jIn, Piece p)
+	public static void setPiece(int i, int j, Piece p)
 	{
-		board[iIn][jIn].setPiece(p);
+		board[i][j].setPiece(p);
 	}
 
-	public static Piece getPiece(int iIn, int jIn)
+	public static Piece getPiece(int i, int j)
 	{
-		return board[iIn][jIn].getPiece();
+		return board[i][j].getPiece();
 	}
 	
 	public static boolean hasPiece(int i, int j)

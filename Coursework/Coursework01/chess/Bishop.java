@@ -14,8 +14,6 @@ public class Bishop extends Piece
 			case WHITE:
 				setSymbol("♗"); // \u02657
 				break;
-			default:
-				System.out.println("Logic Error - King Class - newColour");
 		}
 	}
 

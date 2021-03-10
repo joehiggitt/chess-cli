@@ -1,4 +1,5 @@
 package chess;
+import java.lang.Math;
 
 public class Rook extends Piece
 {
@@ -13,17 +14,51 @@ public class Rook extends Piece
 			case WHITE:
 				setSymbol("♖"); // \u02656
 				break;
-			default:
-				System.out.println("Logic Error - King Class - newColour");
 		}
 	}
 
 	@Override
 	public boolean isLegitMove(int i0, int j0, int i1, int j1)
 	{
-		if ((i1 == i0) || (j1 == j0))
+		if (i1 == i0)
 		{
+			int jDif = j1 - j0;
+			for (int j = 1; j < Math.abs(jDif); j++)
+			{
+				if ((jDif > 0) && (Board.hasPiece(i0, j0 + j)))
+				{
+					return false;
+				}
+				if ((jDif < 0) && (Board.hasPiece(i0, j0 - j)))
+				{
+					return false;
+				}
+			}
 			return true;
+			
+		}
+		if (j1 == j0)
+		{
+			int iDif = i1 - i0;
+			for (int i = 1; i < Math.abs(iDif); i++)
+			{
+				if (iDif > 0)
+				{
+					if (Board.hasPiece(i0 + i, j0))
+					{
+						return false;
+					}
+				}
+				if (iDif < 0)
+				{
+					if (Board.hasPiece(i0 - i, j0))
+					{
+						return false;
+					}
+				}
+			}
+			return true;
+			
 		}
 		return false;
 	}

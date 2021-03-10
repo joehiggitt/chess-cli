@@ -14,8 +14,6 @@ public class Queen extends Piece
 			case WHITE:
 				setSymbol("♕"); // \u02655
 				break;
-			default:
-				System.out.println("Logic Error - King Class - newColour");
 		}
 	}
 
