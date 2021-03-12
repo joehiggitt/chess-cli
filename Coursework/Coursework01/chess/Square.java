@@ -24,7 +24,7 @@ public class Square
 
 	public void removePiece()
 	{
-		setPiece(null);
+		p = null;
 		hasPiece = false;
 	}
 

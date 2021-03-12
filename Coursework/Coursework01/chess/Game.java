@@ -22,11 +22,12 @@ public class Game
 		i0 = i1 = j0 = j1 = 0;
 		PieceColour colour = PieceColour.WHITE;
 
+		// Set up game
 		gameEnd = false;
-
 		board.initialiseBoard();
 		board.initialisePieces();
 
+		// Game loop
 		while (!gameEnd)
 		{
 			// Output board
@@ -104,12 +105,6 @@ public class Game
 					continue;
 				}
 
-				if (!board.getPiece(i0, j0).isLegitMove(i0, j0, i1, j1))
-				{
-					System.out.println("Move not valid.");
-					continue;
-				}
-
 				if (board.hasPiece(i1, j1))
 				{
 					if (board.getPiece(i1, j1).getColour() == colour)
@@ -119,7 +114,13 @@ public class Game
 					}
 				}
 
-				// Move pieces and check for win
+				if (!board.getPiece(i0, j0).isLegitMove(i0, j0, i1, j1))
+				{
+					System.out.println("Move not valid.");
+					continue;
+				}
+
+				// Move pieces and checks for win
 				gameEnd = board.movePiece(i0, j0, i1, j1, board.getPiece(i0, j0));
 				if (gameEnd)
 				{
@@ -134,6 +135,8 @@ public class Game
 	public static void main (String args[])
 	{
 		String query = "";
+
+		// Runs game then asks if the user wants to play again
 		while (true)
 		{
 			play();

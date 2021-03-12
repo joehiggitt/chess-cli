@@ -10,9 +10,11 @@ public class CheckInput
 			return true;
 		}
 
+		// Defines arrays of accepted input characters
 		char[] nums = {'1', '2', '3', '4', '5', '6', '7', '8'};
 		char[] letters = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
 
+		// Checks if the input is in each array
 		if (input.length() == 2)
 		{
 			for (char itemNums : nums)

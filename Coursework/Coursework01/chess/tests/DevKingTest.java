@@ -89,21 +89,21 @@ public class DevKingTest {
 	}
 	
 	
-	@Test // failed
+	@Test
 	public void badMoveW5(){
 		setUpforKingA();
 		King k = (King) Board.getPiece(7,4);
 		assertFalse(k.isLegitMove(7,4,6,5));
 	}
 	
-	@Test // failed
+	@Test
 	public void badMoveW6(){
 		setUpforKingA();
 		King k = (King) Board.getPiece(7,4);
 		assertFalse(k.isLegitMove(7,4,7,5));
 	}
 	
-	@Test // failed
+	@Test
 	public void badMoveW7(){
 		setUpforKingB();
 		King k = (King) Board.getPiece(2,6);
@@ -118,21 +118,21 @@ public class DevKingTest {
 		assertFalse(k.isLegitMove(0,4,0,4));
 	}	
 	
-	@Test // failed
+	@Test
 	public void badMoveB2(){
 		setUpforKingA();
 		King k = (King) Board.getPiece(0,4);
 		assertFalse(k.isLegitMove(0,4,0,5));
 	}
 	
-	@Test // failed
+	@Test
 	public void badMoveB3(){
 		setUpforKingA();
 		King k = (King) Board.getPiece(0,4);
 		assertFalse(k.isLegitMove(0,4,1,5));
 	}
 	
-	@Test // failed
+	@Test
 	public void badMoveB4(){
 		setUpforKingA();
 		King k = (King) Board.getPiece(0,4);

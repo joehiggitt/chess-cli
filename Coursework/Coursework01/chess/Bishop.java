@@ -23,11 +23,13 @@ public class Bishop extends Piece
 		int iDif = i1 - i0;
 		int jDif = j1 - j0;
 
+		// Checks if move involves taking own piece
 		if (Board.hasPiece(i1, j1) && Board.getPiece(i1, j1).getColour() == colour)
 		{
 			return false;
 		}
 		
+		// Checks if movement is legit
 		if (Math.abs(iDif) == Math.abs(jDif))
 		{
 			for (int x = 1; x < Math.abs(iDif); x++)
@@ -55,17 +57,3 @@ public class Bishop extends Piece
 		return false;
 	}
 }
-
-
-// for (int j = 1; j < Math.abs(jDif); j++)
-// {
-// 	if ((jDif > 0) && (Board.hasPiece(i0, j0 + j)))
-// 	{
-// 		return false;
-// 	}
-// 	if ((jDif < 0) && (Board.hasPiece(i0, j0 - j)))
-// 	{
-// 		return false;
-// 	}
-// }
-// return true;

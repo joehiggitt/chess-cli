@@ -9,13 +9,15 @@ public class Board
 		for (int i = 0; i < board[0].length; i++)
 		{
 			for (int j = 0; j < board[1].length; j++)
+			{
 				board[i][j] = new Square();
+			}
 		}		
 	}
     
-	// REQUIRES WORK
 	public static void initialisePieces()
 	{
+		// Places all pieces onto board
 		setPiece(0, 0, new Rook(PieceColour.BLACK));
 		setPiece(0, 1, new Knight(PieceColour.BLACK));
 		setPiece(0, 2, new Bishop(PieceColour.BLACK));
@@ -49,7 +51,7 @@ public class Board
 		System.out.print("  ---------------\n");		
 		for (int i = 0; i < board[0].length; i++)
 		{
-			int row=i+1;
+			int row = i + 1;
 				for (int j = 0; j < board[1].length; j++)
 				{
 					if ((j == 0) && hasPiece(i,j))
@@ -74,11 +76,13 @@ public class Board
 		System.out.print("  ---------------");
 		System.out.print("\n  a b c d e f g h \n");	
 	}
-	
-	// REQUIRES WORK	
+
 	public static boolean movePiece(int i0, int j0, int i1, int j1, Piece p)
 	{
+		// Removes piece from board
 		board[i0][j0].removePiece();
+
+		// Places piece in new position, returns true if a King is taken
 		if (getPiece(i1, j1) instanceof King)
 		{
 			setPiece(i1, j1, p);

@@ -20,6 +20,14 @@ public class Pawn extends Piece
 	public boolean isLegitMove(int i0, int j0, int i1, int j1)
 	{
 		boolean take = Board.hasPiece(i1, j1);
+
+		// Checks if move involves taking own piece
+		if (take && (Board.getPiece(i1, j1).getColour() == colour))
+		{
+			return false;
+		}
+
+		// Checks if movement is legit
 		switch(colour)
 		{
 			case BLACK:
@@ -33,12 +41,9 @@ public class Pawn extends Piece
 				}
 				if ((i1 == i0 + 1) && ((j1 == j0 + 1) || (j1 == j0 - 1)) && take)
 				{
-					if (Board.getPiece(i1, j1).getColour() == colour)
-					{
-						return false;
-					}
 					return true;
 				}
+
 			case WHITE:
 				if ((i1 == i0 - 1) && (j1 == j0) && !take)
 				{
@@ -50,13 +55,10 @@ public class Pawn extends Piece
 				}
 				if ((i1 == i0 - 1) && ((j1 == j0 + 1) || (j1 == j0 - 1)) && take)
 				{
-					if (Board.getPiece(i1, j1).getColour() == colour)
-					{
-						return false;
-					}
 					return true;
 				}
 		}
+		
 		return false;
 	}
 }
