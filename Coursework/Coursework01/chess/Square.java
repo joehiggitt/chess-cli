@@ -19,11 +19,13 @@ public class Square
 	public void setPiece(Piece newP)
 	{
 		p = newP;
+		hasPiece = true;
 	}
 
 	public void removePiece()
 	{
 		setPiece(null);
+		hasPiece = false;
 	}
 
 	public boolean hasPiece()

@@ -192,7 +192,7 @@ public class DevRookTest {
 	
 	
 	
-	@Test
+	@Test // failed
 	public void badMove9() {
 		setUpDforRook();
 		Rook r = (Rook) Board.getPiece(3,4);
@@ -219,7 +219,7 @@ public class DevRookTest {
 	
 	
 	
-	@Test
+	@Test // failed
 	public void verticalUpWhiteBad1() {//Moving to a white piece square
 		setUpAforRook();
 		Rook r = (Rook) Board.getPiece(7,0);
@@ -255,7 +255,7 @@ public class DevRookTest {
 	}
 	
 	
-	@Test
+	@Test // failed
 	public void verticalUpBlackBad() {
 		setUpCforRook();
 		Rook r = (Rook) Board.getPiece(4,3);
@@ -263,7 +263,7 @@ public class DevRookTest {
 	}
 	
 	
-	@Test
+	@Test // failed
 	public void verticalDownBlackBad2() {//Moving to a white piece square
 		setUpAforRook();
 		Rook r = (Rook) Board.getPiece(0,0);

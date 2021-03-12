@@ -33,9 +33,12 @@ public class Pawn extends Piece
 				}
 				if ((i1 == i0 + 1) && ((j1 == j0 + 1) || (j1 == j0 - 1)) && take)
 				{
+					if (Board.getPiece(i1, j1).getColour() == colour)
+					{
+						return false;
+					}
 					return true;
 				}
-				break;
 			case WHITE:
 				if ((i1 == i0 - 1) && (j1 == j0) && !take)
 				{
@@ -47,11 +50,12 @@ public class Pawn extends Piece
 				}
 				if ((i1 == i0 - 1) && ((j1 == j0 + 1) || (j1 == j0 - 1)) && take)
 				{
+					if (Board.getPiece(i1, j1).getColour() == colour)
+					{
+						return false;
+					}
 					return true;
 				}
-				break;
-			default:
-				return false;
 		}
 		return false;
 	}

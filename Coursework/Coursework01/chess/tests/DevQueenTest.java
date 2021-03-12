@@ -122,7 +122,7 @@ public class DevQueenTest {
 		assertFalse(q.isLegitMove(7,3,7,3));
 	}
 	
-	@Test
+	@Test // failed
 	public void badMoveWhite1() {
 		setUpforQueenB();
 		Queen q = (Queen) Board.getPiece(7,3);
@@ -185,7 +185,7 @@ public class DevQueenTest {
 		assertTrue(q.isLegitMove(5,1,6,0));
 	}
 	
-	@Test
+	@Test // failed
 	public void badMoveBlack2() {
 		setUpforQueenC();
 		Queen q = (Queen) Board.getPiece(5,1);
@@ -206,28 +206,28 @@ public class DevQueenTest {
 		assertFalse(q.isLegitMove(5,1,4,3));
 	}	
 	
-	@Test
+	@Test // failed
 	public void badMoveInitialWhite1() {
 		setUpforQueenA();
 		Queen q = (Queen) Board.getPiece(7,3);
 		assertFalse(q.isLegitMove(7,3,7,2));
 	}
 	
-	@Test
+	@Test // failed
 	public void badMoveInitialWhite2() {
 		setUpforQueenA();
 		Queen q = (Queen) Board.getPiece(7,3);
 		assertFalse(q.isLegitMove(7,3,7,4));
 	}	
 
-	@Test
+	@Test // failed
 	public void badMoveInitialWhite4() {
 		setUpforQueenA();
 		Queen q = (Queen) Board.getPiece(7,3);
 		assertFalse(q.isLegitMove(7,3,6,3));
 	}
 	
-	@Test
+	@Test // failed
 	public void badMoveInitialWhite5() {
 		setUpforQueenA();
 		Queen q = (Queen) Board.getPiece(7,3);
@@ -276,21 +276,21 @@ public class DevQueenTest {
 		assertFalse(q.isLegitMove(7,3,4,0));
 	}
 	
-	@Test
+	@Test // failed
 	public void badMoveInitialBlack0() {
 		setUpforQueenA();
 		Queen q = (Queen) Board.getPiece(0,3);
 		assertFalse(q.isLegitMove(0,3,0,3));
 	}
 	
-	@Test
+	@Test // failed
 	public void badMoveInitialBlack2() {
 		setUpforQueenA();
 		Queen q = (Queen) Board.getPiece(0,3);
 		assertFalse(q.isLegitMove(0,3,1,4));
 	}	
 	
-	@Test
+	@Test // failed
 	public void badMoveInitialBlack4() {
 		setUpforQueenA();
 		Queen q = (Queen) Board.getPiece(0,3);

@@ -28,6 +28,7 @@ public class Board
 		{
 			setPiece(1, i, new Pawn(PieceColour.BLACK));
 		}
+
 		for (int i = 0; i < 8; i++)
 		{
 			setPiece(6, i, new Pawn(PieceColour.WHITE));
@@ -77,14 +78,13 @@ public class Board
 	// REQUIRES WORK	
 	public static boolean movePiece(int i0, int j0, int i1, int j1, Piece p)
 	{
-		if (p instanceof King)
+		board[i0][j0].removePiece();
+		if (getPiece(i1, j1) instanceof King)
 		{
-			board[i1][j1].setPiece(board[i0][j0].getPiece());
-			board[i0][j0].removePiece();
+			setPiece(i1, j1, p);
 			return true;
 		}
-		board[i1][j1].setPiece(board[i0][j0].getPiece());
-		board[i0][j0].removePiece();
+		setPiece(i1, j1, p);
 		return false;
 	}
 
@@ -99,15 +99,8 @@ public class Board
 	}
 	
 	public static boolean hasPiece(int i, int j)
-	{		
-		if (getPiece(i, j) == null)
-		{
-			return false;
-		}
-		else
-		{
-			return true;
-		}
+	{
+		return board[i][j].hasPiece();
 	}
 
 }

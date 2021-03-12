@@ -5,21 +5,24 @@ public class Game
 {
 	private static boolean gameEnd = false;
 
-	// REQUIRES WORK
 	public static void play()
 	{
+		// Initialise objects
 		Console keyboard = System.console();
 		Board board = new Board();
 		CheckInput checkInput = new CheckInput();
-		String[] turn = {"white", "black"};
-		int count = 0;
 
+		// Initialise local variables
+		String[] turn = {"white", "black"};
+		int count, go;
+		count = go = 0;
 		String origin = "";
 		String destination = "";
-		int i0, j0, i1, j1, iDif, jDif;
-		i0 = i1 = j0 = j1 = iDif = jDif = 0;
+		int i0, j0, i1, j1;
+		i0 = i1 = j0 = j1 = 0;
 		PieceColour colour = PieceColour.WHITE;
-		Piece originPiece, destinationPiece;
+
+		gameEnd = false;
 
 		board.initialiseBoard();
 		board.initialisePieces();
@@ -30,7 +33,7 @@ public class Game
 			board.printBoard();
 
 			// Sets variables before turn
-			int go = count % 2;
+			go = count % 2;
 			switch(go)
 			{
 				case 0:
@@ -62,13 +65,12 @@ public class Game
 					break;
 				}
 
-				// Converts input to useable format and finds piece at origin
+				// Converts input to useable format
 				i0 = Integer.parseInt(String.valueOf(origin.charAt(0))) - 1;
 				j0 = Integer.parseInt(String.valueOf(origin.charAt(1) - 97));
-				originPiece = board.getPiece(i0, j0);
 
 				// Checks if piece selected at origin coordinates is valid
-				if ((!board.hasPiece(i0, j0)) || (originPiece.getColour() != colour))
+				if ((!board.hasPiece(i0, j0)) || (board.getPiece(i0, j0).getColour() != colour))
 				{
 					System.out.println("Square selected has no " + turn[go] + " piece.");
 					continue;
@@ -102,7 +104,7 @@ public class Game
 					continue;
 				}
 
-				if (!originPiece.isLegitMove(i0, j0, i1, j1))
+				if (!board.getPiece(i0, j0).isLegitMove(i0, j0, i1, j1))
 				{
 					System.out.println("Move not valid.");
 					continue;
@@ -110,26 +112,46 @@ public class Game
 
 				if (board.hasPiece(i1, j1))
 				{
-					destinationPiece = board.getPiece(i1, j1);
-					if (destinationPiece.getColour() == colour)
+					if (board.getPiece(i1, j1).getColour() == colour)
 					{
-						System.out.println("Move not valid.");
+						System.out.println("Can't take a " + turn[go] + " piece.");
 						continue;
 					}
 				}
 
 				// Move pieces and check for win
-				boolean gameEnd = board.movePiece(i0, j0, i1, j1, board.getPiece(i1, j1));
+				gameEnd = board.movePiece(i0, j0, i1, j1, board.getPiece(i0, j0));
+				if (gameEnd)
+				{
+					System.out.println("\n" + turn[go].substring(0, 1).toUpperCase() + turn[go].substring(1) + " wins, congratulations!");
+				}
 				break;
 			}
-
 			count++;
 		}		
 	}
-	
-	// REQUIRES WORK
+
 	public static void main (String args[])
 	{
-		play();
+		String query = "";
+		while (true)
+		{
+			play();
+			System.out.println("\n\nWould you like to start a new chess game? (y/n)");
+			do
+			{
+				Console keyboard = System.console();
+				query = keyboard.readLine("> ");
+				if (!query.equals("y") && !query.equals("n"))
+				{
+					System.out.println("Invalid input.");
+				}
+			}
+			while (!query.equals("y") && !query.equals("n"));
+			if (query.equals("n"))
+			{
+				break;
+			}
+		}
 	}
 }

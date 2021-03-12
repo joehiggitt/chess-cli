@@ -20,6 +20,11 @@ public class Rook extends Piece
 	@Override
 	public boolean isLegitMove(int i0, int j0, int i1, int j1)
 	{
+		if (Board.hasPiece(i1, j1) && Board.getPiece(i1, j1).getColour() == colour)
+		{
+			return false;
+		}
+		
 		if (i1 == i0)
 		{
 			int jDif = j1 - j0;
@@ -35,31 +40,25 @@ public class Rook extends Piece
 				}
 			}
 			return true;
-			
 		}
+
 		if (j1 == j0)
 		{
 			int iDif = i1 - i0;
 			for (int i = 1; i < Math.abs(iDif); i++)
 			{
-				if (iDif > 0)
+				if ((iDif > 0) && (Board.hasPiece(i0 + i, j0)))
 				{
-					if (Board.hasPiece(i0 + i, j0))
-					{
-						return false;
-					}
+					return false;
 				}
-				if (iDif < 0)
+				if ((iDif < 0) && (Board.hasPiece(i0 - i, j0)))
 				{
-					if (Board.hasPiece(i0 - i, j0))
-					{
-						return false;
-					}
+					return false;
 				}
 			}
 			return true;
-			
 		}
+		
 		return false;
 	}
 }

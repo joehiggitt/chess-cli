@@ -146,7 +146,7 @@ public class DevBishopTest {
 		assertFalse(b1.isLegitMove(7,5,7,6));
 	}
 	
-	@Test
+	@Test // failed
 	public void badMove8() {//swap whites
 		setUpforBishopA();
 		Bishop b1 = (Bishop) Board.getPiece(7,5);
@@ -198,7 +198,7 @@ public class DevBishopTest {
 		assertFalse(b1.isLegitMove(2,0,2,2));
 	}
 	
-	@Test
+	@Test // failed
 	public void badMove11() {
 		setUpforBishopB();
 		Bishop b1 = (Bishop) Board.getPiece(2,0);
