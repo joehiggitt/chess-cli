@@ -1,0 +1,6 @@
+{
+	"atomicNumber": 7,
+	"bondsWith": ["H", "N"],
+	"name": "nitrogen",
+	"symbol": N,
+}
