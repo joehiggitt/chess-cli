@@ -1,4 +1,4 @@
-package chessdev;
+package chess;
 
 import static org.junit.Assert.*;
 

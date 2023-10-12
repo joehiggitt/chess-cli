@@ -1,6 +1,0 @@
-{
-	"atomicNumber": 1,
-	"bondsWith": ["H", "O", "N", "C"],
-	"name": "hydrogen",
-	"symbol": H,
-}
